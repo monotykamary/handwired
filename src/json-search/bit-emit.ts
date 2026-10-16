@@ -250,6 +250,7 @@ function declaredStorage(wholes: readonly (Whole | undefined)[]): Storage {
   return wholes.every(whole => isBit(whole!)) ? 'bit' : 'whole'
 }
 
+// Programs of FP32 stages only: a word stage (runtime/words.ts) is integer code already, and loop-emit.ts writes it.
 export function emitBitLoopWgsl(loop: LoopProgram, options: {workgroupSize?: number} = {}): BitLoopWgslModule {
   const workgroupSize = options.workgroupSize ?? 64
   const {positions} = loop
